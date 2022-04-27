@@ -179,9 +179,9 @@ Hashers:
 
 ## Version Information
 
-- 7zz Version 21.02 alpha
+- 7zz Version 21.07
   - [LZ4] Version 1.9.3
-  - [Zstandard] Version 1.5.0
+  - [Zstandard] Version 1.5.2
   - [Fast LZMA2] Version v1.0.1
   - [Brotli] Version v1.0.9
   - [LZ5] Version v1.5
