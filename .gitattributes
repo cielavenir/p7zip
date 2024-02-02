@@ -1,0 +1,71 @@
+# .gitattributes
+# default behavior
+* text=auto eol=lf
+
+*.txt text
+# source files
+*.asm text
+*.c text
+*.cc text
+*.cpp text
+*.h text
+*.lua text
+*.py text
+*.s text
+# building scripts
+*.md text
+*.cmake text
+makefile* text
+*.mak text
+*.mk text
+*.sh text
+*.yaml text
+*.yml text
+# other sources
+*.hhp text
+*.inf text
+*.nsi text
+*.wxs text
+
+# binaries
+*.bmp binary
+*.exe binary
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.odt binary
+*.png binary
+# documents
+*.chm binary
+*.pdf binary
+# binary sources
+*.pyc binary
+*.sfx binary
+# archives
+*.7z binary
+*.bz2 binary
+*.gz binary
+*.lz binary
+*.lzma binary
+*.tar binary
+*.rar binary
+*.xz binary
+*.zip binary
+
+# visual studio
+*.def text
+*.dsp text eol=crlf
+*.dsw text eol=crlf
+*.manifest text
+*.rc text
+*.res binary
+*.sln text
+*.suo binary
+*.vcxproj* text
+*.vcproj* text
+
+# Windows
+#*.bat text eol=crlf
+#*.cmd text eol=crlf
+

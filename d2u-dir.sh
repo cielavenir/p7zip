@@ -30,21 +30,27 @@ IFS="
 
 if [ -n "${DIR1}" ]; then
 
-for line in `find "${DIR0}" -type d`; do 
+for line in `find "${DIR0}" -type d`; do
     mkdir -p "${DIR1}/${line#$DIR0}"
 done
 # every `.' denoting extension has to escaped, every extension terminated with $
-for line in `find "${DIR0}" -type f | grep -Ev '\.git|\.BMP$|\.bmp$|\.BIN$|\.bin$|\.CUR$|\.cur$|\.DSP$|\.dsp$|\.DSW$|\.dsw$|\.EXE$|\.exe$|\.GIF$|\.gif$|\.icns$|\.ICO$|\.ico$|\.JAR$|\.jar$|\.JPG$|\.jpg$|\.jpeg$|\.PCX$|\.pcx$|\.PNG$|\.png$|\.RES$|\.res$|\.SFX$|\.sfx$|\.WAV$|\.wav$'`; do
-    dos2unix < "${line}" > "${DIR1}/${line#$DIR0}"
+EXCL_EXT='\.a|\.bmp$|\.bin$|\.chm$|\.cur$|\.dsp$|\.dsw$|\.exe$|\.gif$|\.icns$|\.ico$|\.jar$|\.jpg$|\.jpeg$|\.lib|\.pcx$$|\.png$|\.res$|\.sfx$|\.wav$'
+for line in `find "${DIR0}" -type f | grep -iEv "$EXCL_EXT"`; do
+    echo $line
+    dos2unix < "${line}" > "${DIR1}/${line#$DIR0}" || cat < "${line}" > "${DIR1}/${line#$DIR0}"
     touch -r "${line}" "${DIR1}/${line#$DIR0}"
 done
-for line in `find "${DIR0}" -type d`; do 
+for line in `find "${DIR0}" -type f | grep -iE "$EXCL_EXT"`; do
+    cat < "${line}" > "${DIR1}/${line#$DIR0}"
+    touch -r "${line}" "${DIR1}/${line#$DIR0}"
+done
+for line in `find "${DIR0}" -type d`; do
     touch -r "${line}" "${DIR1}/${line#$DIR0}"
 done
 
 else
 
-for line in `find "${DIR0}" -type f | grep -Ev '\.git|\.BMP$|\.bmp$|\.BIN$|\.bin$|\.CUR$|\.cur$|\.DSP$|\.dsp$|\.DSW$|\.dsw$|\.EXE$|\.exe$|\.GIF$|\.gif$|\.icns$|\.ICO$|\.ico$|\.JAR$|\.jar$|\.JPG$|\.jpg$|\.jpeg$|\.PCX$|\.pcx$|\.PNG$|\.png$|\.RES$|\.res$|\.SFX$|\.sfx$|\.WAV$|\.wav$'`; do
+for line in `find "${DIR0}" -type f | grep -iEv "$EXCL_EXT"`; do
     dos2unix "${line}"
 done
 
