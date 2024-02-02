@@ -2,7 +2,7 @@ ifneq ($(findstring mingw32,$(CC)),)
   DCMAKE_SYSTEM_NAME := -DCMAKE_SYSTEM_NAME=Windows
 endif
 
-# Build MT API 
+# Build MT API
 $O/lz4-mt_common.o: ../../../../Codecs/zstdmt/lib/lz4-mt_common.c
 	$(CC) $(CFLAGS) $< -I ../../../../Codecs/lz4/lib
 $O/lz4-mt_compress.o: ../../../../Codecs/zstdmt/lib/lz4-mt_compress.c
@@ -85,7 +85,7 @@ $O/libbrotlicommon-static.a: ../../../../Codecs/brotli/c/include/brotli/decode.h
 	cp brotli_build/libbrotlidec-static.a $O
 	cp brotli_build/libbrotlienc-static.a $O
 
-# Compile brotli method and Handler 
+# Compile brotli method and Handler
 $O/BrotliDecoder.o: ../../Compress/BrotliDecoder.cpp
 	$(CXX) $(CXXFLAGS) $< -I ../../../../Codecs/brotli/c/include
 $O/BrotliEncoder.o: ../../Compress/BrotliEncoder.cpp
@@ -209,7 +209,7 @@ $O/sha512.o: ../../../../Codecs/hashes/sha512.c
 $O/blake3.o: ../../../../Codecs/hashes/blake3.c
 	$(CC) $(CFLAGS) $<
 
-# Compile hashes method 
+# Compile hashes method
 $O/Md2Reg.o: ../../../Common/Md2Reg.cpp
 	$(CXX) $(CXXFLAGS) $<
 $O/Md4Reg.o: ../../../Common/Md4Reg.cpp
