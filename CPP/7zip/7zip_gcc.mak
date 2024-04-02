@@ -81,7 +81,7 @@ SHARED_EXT=.dll
 LDFLAGS = -shared -DEF $(DEF_FILE) $(LDFLAGS_STATIC)
 else
 SHARED_EXT=.so
-LDFLAGS = -shared -fPIC $(LDFLAGS_STATIC) 
+LDFLAGS = -shared -fPIC $(LDFLAGS_STATIC)
 CC_SHARED=-fPIC
 endif
 
@@ -105,7 +105,7 @@ endif
 
 PROGPATH = $(O)/$(PROG)$(SHARED_EXT)
 PROGPATH_STATIC = $(O)/$(PROG)s$(SHARED_EXT)
-	
+
 ifdef IS_MINGW
 
 ifdef MSYSTEM
@@ -126,7 +126,7 @@ LIB2 = -loleaut32 -luuid -ladvapi32 -luser32 $(LIB2_GUI)
 CXXFLAGS_EXTRA = -DUNICODE -D_UNICODE
 # -Wno-delete-non-virtual-dtor
 
- 
+
 else
 
 RM = rm -rf
@@ -172,7 +172,7 @@ else
       # -DABI_CDECL
     endif
   endif
-  AFLAGS = -nologo $(AFLAGS_ABI) -Fo$(O)/
+  AFLAGS = -nologo $(AFLAGS_ABI) -Fo$(O)/$(basename $(<F)).o
 endif
 
 ifdef USE_ASM
